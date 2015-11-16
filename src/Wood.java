@@ -9,7 +9,7 @@ public class Wood implements Resource{
 	//use this constructor for one time period
 	public Wood(){
 		numResource=10;
-		isRenewable = true;
+		isRenewable = false;
 		currentNumResource=numResource;
 	}
 	
@@ -20,20 +20,17 @@ public class Wood implements Resource{
 	
 	@Override
 	public boolean isRenewable() {
-		// TODO Auto-generated method stub
-		return false;
+		return isRenewable;
 	}
 
 	@Override
-	public int currentNumResources() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getCurrentNumResources() {
+		return currentNumResource;
 	}
 
 	@Override
 	public int getNumResources() {
-		// TODO Auto-generated method stub
-		return 0;
+		return numResource;
 	}
 
 }

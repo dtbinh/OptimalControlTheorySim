@@ -24,7 +24,7 @@ public class Land implements Resource{
 	}
 
 	@Override
-	public int currentNumResources() {
+	public int getCurrentNumResources() {
 		return currentNumResource;
 	}
 

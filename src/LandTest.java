@@ -17,8 +17,8 @@ public class LandTest {
 	}
 
 	@Test
-	public void testCurrentNumResources() {
-		assertNotNull(newLand.currentNumResources());
+	public void testGetCurrentNumResources() {
+		assertNotNull(newLand.getCurrentNumResources());
 	}
 
 	@Test
