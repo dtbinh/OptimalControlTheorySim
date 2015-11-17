@@ -6,13 +6,19 @@ public class Wood implements Resource{
 	private boolean isRenewable;
 	private int currentNumResource;
 
-	//use this constructor for one time period
+	/**
+	 * constructor for one time period tests
+	 */
 	public Wood(){
 		numResource=0;
 		isRenewable = false;
 		currentNumResource=numResource;
 	}
 	
+	/**
+	 * regular constructor
+	 * @param numConsumers
+	 */
 	public Wood(int numConsumers){
 		Random rn = new Random();
 		numResource=rn.nextInt(numConsumers*2);

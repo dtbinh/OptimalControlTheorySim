@@ -10,6 +10,9 @@ public class Consumer {
 	private double realSurvivalRate;
 	private boolean isAlive;
 	
+	/**
+	 * Constructor
+	 */
 	public Consumer(){
 		baseSurvivalRate=.2;
 		isAlive=true;
@@ -20,18 +23,26 @@ public class Consumer {
 		
 	}
 	
-	//generates the wallet for the consumer each time period
+	/**
+	 *generates the wallet for the consumer each time period
+	 */
 	public void dollaDollaBillYall(){
 		Random rn = new Random();
 		money = rn.nextInt(10);
 	}
 	
-	//returns true if consumer survives the time period
+	/**
+	 * returns true if consumer survives the time period
+	 * @return
+	 */
 	public boolean isAlive(){
 		return false;
 	}
 	
-	//calculates real survival rate after buying period, takes weapons+food into account
+	/**
+	 * calculates real survival rate after buying period, takes weapons+food into account
+	 * @return
+	 */
 	public double calculateRealSurvivalRate(){
 		return realSurvivalRate=baseSurvivalRate;
 	}

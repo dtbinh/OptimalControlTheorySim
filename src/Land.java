@@ -6,13 +6,19 @@ public class Land implements Resource{
 	private boolean isRenewable;
 	private int currentNumResource;
 	
-	//use this constructor for one time period
+	/**
+	 * constructor for one time period tests
+	 */
 	public Land(){
 		numResource=10;
 		isRenewable = true;
 		currentNumResource=numResource;
 	}
 	
+	/**
+	 * normal constructor
+	 * @param numConsumers
+	 */
 	public Land(int numConsumers){
 		Random rn = new Random();
 		numResource=rn.nextInt(numConsumers);
