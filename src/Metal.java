@@ -1,29 +1,30 @@
 import java.util.Random;
 
-public class Metal implements Resource{
+public class Metal implements Resource {
 
 	private final int numResource;
 	private boolean isRenewable;
 	private int currentNumResource;
-	
+
 	/**
 	 * constructor for one time period tests
 	 */
-	public Metal(){
-		numResource=0;
+	public Metal() {
+		numResource = 0;
 		isRenewable = false;
-		currentNumResource=numResource;
+		currentNumResource = numResource;
 	}
-	
+
 	/**
 	 * regular constructor
+	 * 
 	 * @param numConsumers
 	 */
-	public Metal(int numConsumers){
+	public Metal(int numConsumers) {
 		Random rn = new Random();
-		numResource=rn.nextInt(numConsumers*2);
+		numResource = rn.nextInt(numConsumers * 2);
 	}
-	
+
 	@Override
 	public boolean isRenewable() {
 		return isRenewable;
