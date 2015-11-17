@@ -1,23 +1,15 @@
-import java.util.Random;
 
-public class Wood implements Resource{
+public class Metal implements Resource{
 
 	private final int numResource;
 	private boolean isRenewable;
 	private int currentNumResource;
-
-	//use this constructor for one time period
-	public Wood(){
+	
+	public Metal(){
 		numResource=0;
 		isRenewable = false;
 		currentNumResource=numResource;
 	}
-	
-	public Wood(int numConsumers){
-		Random rn = new Random();
-		numResource=rn.nextInt(numConsumers*2);
-	}
-	
 	@Override
 	public boolean isRenewable() {
 		return isRenewable;

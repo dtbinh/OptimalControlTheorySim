@@ -3,27 +3,27 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class WoodTest {
-
-	Wood testWood;
+public class MetalTest {
+	
+	Metal testMetal;
 	@Before
 	public void setUp() throws Exception {
-		testWood=new Wood();
+		testMetal = new Metal();
 	}
 
 	@Test
 	public void testIsRenewable() {
-		assertFalse(testWood.isRenewable());
+		assertFalse(testMetal.isRenewable());
 	}
 
 	@Test
 	public void testGetCurrentNumResources() {
-		assertEquals(testWood.getCurrentNumResources(), 0);
+		assertEquals(testMetal.getCurrentNumResources(), 0);
 	}
 
 	@Test
 	public void testGetNumResources() {
-		assertEquals(testWood.getNumResources(),0);
+		assertEquals(testMetal.getNumResources(), 0);
 	}
 
 }

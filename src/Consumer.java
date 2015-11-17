@@ -33,7 +33,7 @@ public class Consumer {
 	
 	//calculates real survival rate after buying period, takes weapons+food into account
 	public double calculateRealSurvivalRate(){
-		return 0;
+		return realSurvivalRate=baseSurvivalRate;
 	}
 	
 }
