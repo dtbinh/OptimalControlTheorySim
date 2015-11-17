@@ -1,7 +1,7 @@
 
-public interface Producer<G> {
+public interface Producer {
 	int produce();//transforms resources into goods, returns number of goods
 	int getNumGoods();//gets number of goods produced
-	int setNumGoods();//sets number of goods produced
-	int calculateProfit();//calculates profit made by producer in time period
+	void calculateProfit();//calculates profit made by producer in time period
+
 }

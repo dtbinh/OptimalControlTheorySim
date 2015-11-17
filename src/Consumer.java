@@ -1,3 +1,4 @@
+import java.util.Random;
 
 public class Consumer {
 	
@@ -12,6 +13,17 @@ public class Consumer {
 	public Consumer(){
 		baseSurvivalRate=.2;
 		isAlive=true;
+		numFood=0;
+		numSpears=0;
+		numGuns=0;
+		money=0;
+		
+	}
+	
+	//generates the wallet for the consumer each time period
+	public void dollaDollaBillYall(){
+		Random rn = new Random();
+		money = rn.nextInt(10);
 	}
 	
 	//returns true if consumer survives the time period
