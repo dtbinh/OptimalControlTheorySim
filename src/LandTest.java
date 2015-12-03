@@ -8,7 +8,7 @@ public class LandTest {
 	Land newLand;
 	@Before
 	public void setUp() throws Exception {
-		newLand = new Land();
+		newLand = new Land(20);
 	}
 
 	@Test

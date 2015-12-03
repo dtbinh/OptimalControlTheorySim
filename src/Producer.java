@@ -5,7 +5,7 @@ public interface Producer {
 	 * transforms resources into goods, returns number of goods
 	 * @return
 	 */
-	int produce();
+	void produce();
 	
 	/**
 	 * gets number of goods produced
@@ -17,4 +17,9 @@ public interface Producer {
 	 * calculates profit made by producer in time period
 	 */
 	void calculateProfit();
+	
+	/**
+	 * sets the price of the good for that time period
+	 */
+	void price();
 }

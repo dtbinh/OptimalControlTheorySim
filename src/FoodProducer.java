@@ -5,6 +5,7 @@ public class FoodProducer implements Producer{
 	private int numSold;
 	private int price;
 	private int profit;
+	private int productionCosts;
 	
 	public FoodProducer(Resource resource){
 		this.resource=resource;
@@ -14,9 +15,10 @@ public class FoodProducer implements Producer{
 	}
 	
 	@Override
-	public int produce() {
-		// TODO Auto-generated method stub
-		return 0;
+	public void produce() {
+		for(int i = 0; i < resource.getNumResources(); i++){
+			goods++;
+		}
 	}
 
 	@Override
@@ -26,7 +28,13 @@ public class FoodProducer implements Producer{
 
 	@Override
 	public void calculateProfit() {
-		this.profit+=goods*price;
+		this.profit+=(goods*price) - (productionCosts*goods);
+	}
+
+	@Override
+	public void price() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

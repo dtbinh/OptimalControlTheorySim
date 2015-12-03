@@ -8,7 +8,7 @@ public class WoodTest {
 	Wood testWood;
 	@Before
 	public void setUp() throws Exception {
-		testWood=new Wood();
+		testWood=new Wood(20);
 	}
 
 	@Test
@@ -18,12 +18,12 @@ public class WoodTest {
 
 	@Test
 	public void testGetCurrentNumResources() {
-		assertEquals(testWood.getCurrentNumResources(), 0);
+		assertNotNull(testWood.getCurrentNumResources());
 	}
 
 	@Test
 	public void testGetNumResources() {
-		assertEquals(testWood.getNumResources(),0);
+		assertNotNull(testWood.getNumResources());
 	}
 
 }

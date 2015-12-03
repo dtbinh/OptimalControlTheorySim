@@ -14,7 +14,7 @@ public class Consumer {
 	 * Constructor
 	 */
 	public Consumer(){
-		baseSurvivalRate=.2;
+		realSurvivalRate = baseSurvivalRate=.2;
 		isAlive=true;
 		numFood=0;
 		numSpears=0;
@@ -23,6 +23,10 @@ public class Consumer {
 		
 	}
 	
+	public int getMoney() {
+		return money;
+	}
+
 	/**
 	 *generates the wallet for the consumer each time period
 	 */
@@ -36,7 +40,15 @@ public class Consumer {
 	 * @return
 	 */
 	public boolean isAlive(){
-		return false;
+		return isAlive;
+	}
+	
+	/**
+	 * Sets whether or not a consumer is alive
+	 * @param b
+	 */
+	public void setIsAlive(boolean b){
+		isAlive = b;
 	}
 	
 	/**
@@ -44,7 +56,7 @@ public class Consumer {
 	 * @return
 	 */
 	public double calculateRealSurvivalRate(){
-		return realSurvivalRate=baseSurvivalRate;
+		return realSurvivalRate;
 	}
 	
 }

@@ -7,21 +7,15 @@ public class Land implements Resource{
 	private int currentNumResource;
 	
 	/**
-	 * constructor for one time period tests
-	 */
-	public Land(){
-		numResource=10;
-		isRenewable = true;
-		currentNumResource=numResource;
-	}
-	
-	/**
-	 * normal constructor
+	 * Land constructor
+	 * Amount land can producer per time period is seeded off numConsumers from first generation * 1000
 	 * @param numConsumers
 	 */
 	public Land(int numConsumers){
 		Random rn = new Random();
-		numResource=rn.nextInt(numConsumers);
+		numResource=rn.nextInt(numConsumers*1000);
+		currentNumResource = numResource;
+		isRenewable = true;
 	}
 	
 	@Override

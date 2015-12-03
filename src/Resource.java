@@ -12,7 +12,7 @@ public interface Resource {
 	 * @return
 	 */
 	int getCurrentNumResources();
-	
+		
 	/**
 	 * returns amount of total resource at start of time period
 	 * @return

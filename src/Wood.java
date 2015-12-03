@@ -7,21 +7,14 @@ public class Wood implements Resource{
 	private int currentNumResource;
 
 	/**
-	 * constructor for one time period tests
-	 */
-	public Wood(){
-		numResource=0;
-		isRenewable = false;
-		currentNumResource=numResource;
-	}
-	
-	/**
-	 * regular constructor
+	 * Wood constructor
+	 * Amount of wood total generated randomly, seeded by numConsumers from the first generation *10000
 	 * @param numConsumers
 	 */
 	public Wood(int numConsumers){
 		Random rn = new Random();
-		numResource=rn.nextInt(numConsumers*2);
+		numResource=rn.nextInt(numConsumers*10000);
+		isRenewable = false;
 	}
 	
 	@Override
