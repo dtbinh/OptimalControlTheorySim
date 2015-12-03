@@ -6,9 +6,10 @@ public class Simulation {
 	private WeaponProducer travelingMerchant;
 	private Land land;
 	private Wood wood;
-	private int timePeriod;
+	private int timePeriods;
+	private int productionRate;
 	
-	public Simulation(int numConsumers){
+	public Simulation(int numConsumers, int timePeriods){
 		consumers = new ArrayList<Consumer>();
 		for(int i=0; i<numConsumers; i++){
 			consumers.add(new Consumer());
@@ -16,11 +17,14 @@ public class Simulation {
 		land = new Land(numConsumers);
 		wood = new Wood(numConsumers);
 		foodCart = new FoodProducer(land);
-		travelingMerchant = new WeaponProducer(wood);
+		travelingMerchant = new WeaponProducer(wood, optimalControlLaw());
+		this.timePeriods = timePeriods;
 	}
 
 	//returns amount of resource that should be consumed in time period
+	//F(numConsumers, numResource, number of timePeriods
 	public int optimalControlLaw(){
+		
 		return 0;
 	}
 	
@@ -50,6 +54,10 @@ public class Simulation {
 	//everything below this comment is for testing purposes only
 	public ArrayList<Consumer> getConsumers() {
 		return consumers;
+	}
+	
+	public int getNumConsumers(){
+		return consumers.size();
 	}
 
 	public FoodProducer getFoodCart() {

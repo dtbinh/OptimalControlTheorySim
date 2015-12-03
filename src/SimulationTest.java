@@ -11,7 +11,7 @@ public class SimulationTest {
 	@Before
 	public void setUp() throws Exception {
 		numConsumers = 20;
-		s = new Simulation(numConsumers);
+		s = new Simulation(numConsumers, 0);
 	}
 
 	@Test

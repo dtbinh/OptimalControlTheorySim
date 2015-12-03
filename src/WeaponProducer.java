@@ -7,12 +7,14 @@ public class WeaponProducer implements Producer{
 	private int price;
 	private int profit;
 	private int productionCosts;
+	private int productionRate;
 	
-	public WeaponProducer(Resource resource){
+	public WeaponProducer(Resource resource, int productionRate){
 		this.resource = resource;
 		profit = 0;
 		goods = 0;
 		numSold = 0;
+		this.productionRate = productionRate;
 	}
 
 	/**
