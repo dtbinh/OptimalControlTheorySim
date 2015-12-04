@@ -5,13 +5,17 @@ import org.junit.Test;
 
 public class FoodProducerTest {
 
+	FoodProducer foodie;
+	Land land;
 	@Before
 	public void setUp() throws Exception {
+		land = new Land(20);
+		foodie = new FoodProducer(land);
 	}
 
 	@Test
 	public void testGetNumGoods() {
-		fail("Not yet implemented");
+		assertEquals(0, foodie.getNumGoods());
 	}
 
 	@Test

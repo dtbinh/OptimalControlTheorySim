@@ -5,13 +5,17 @@ import org.junit.Test;
 
 public class WeaponProducerTest {
 
+	Wood wood;
+	WeaponProducer weaponMerch;
 	@Before
 	public void setUp() throws Exception {
+		wood = new Wood(20);
+		weaponMerch = new WeaponProducer(wood);
 	}
 
 	@Test
 	public void testGetNumGoods() {
-		fail("Not yet implemented");
+		assertEquals(0, weaponMerch.getNumGoods());
 	}
 
 	@Test

@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Simulation {
 	private ArrayList<Consumer> consumers;
 	private FoodProducer foodCart;
-	private WeaponProducer travelingMerchant;
+	private WeaponProducer weaponMerchant;
 	private Land land;
 	private Wood wood;
 	private int timePeriods;
@@ -18,9 +18,9 @@ public class Simulation {
 		land = new Land(numConsumers);
 		wood = new Wood(numConsumers);
 		foodCart = new FoodProducer(land);
-		travelingMerchant = new WeaponProducer(wood);
+		weaponMerchant = new WeaponProducer(wood);
 		this.timePeriods = timePeriods;
-		optimalConstant = travelingMerchant.getResource().getNumResources();
+		optimalConstant = weaponMerchant.getResource().getNumResources();
 		currentTimePeriod = 0;
 	}
 
@@ -73,8 +73,8 @@ public class Simulation {
 		return foodCart;
 	}
 
-	public WeaponProducer getTravelingMerchant() {
-		return travelingMerchant;
+	public WeaponProducer getWeaponMerchant() {
+		return weaponMerchant;
 	}
 
 }

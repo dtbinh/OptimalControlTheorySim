@@ -4,9 +4,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class SimulationTest {
-
+	Simulation sim;
+	
 	@Before
 	public void setUp() throws Exception {
+		sim = new Simulation(20, 5);
 	}
 
 	@Test
@@ -16,17 +18,20 @@ public class SimulationTest {
 
 	@Test
 	public void testGetCurrentTimePeriod() {
-		fail("Not yet implemented");
+		assertEquals(0, sim.getCurrentTimePeriod());
 	}
 
 	@Test
 	public void testSetCurrentTimePeriod() {
-		fail("Not yet implemented");
+		sim.setCurrentTimePeriod(1);
+		assertEquals(1, sim.getCurrentTimePeriod());
 	}
 
 	@Test
 	public void testGenerateDollaDollaBills() {
-		fail("Not yet implemented");
+		for(Consumer c: sim.getConsumers()){
+			assertNotNull(c.getMoney());
+		}
 	}
 
 	@Test
@@ -51,7 +56,9 @@ public class SimulationTest {
 
 	@Test
 	public void testGetConsumers() {
-		fail("Not yet implemented");
+		for(Consumer c: sim.getConsumers()){
+			assertNotNull(c);
+		}
 	}
 
 	@Test
@@ -61,12 +68,12 @@ public class SimulationTest {
 
 	@Test
 	public void testGetFoodCart() {
-		fail("Not yet implemented");
+		assertNotNull(sim.getFoodCart());
 	}
 
 	@Test
-	public void testGetTravelingMerchant() {
-		fail("Not yet implemented");
+	public void testGetWeaponMerchant() {
+		assertNotNull(sim.getWeaponMerchant());
 	}
 
 }
