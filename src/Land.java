@@ -1,23 +1,22 @@
-import java.util.Random;
 
-public class Land implements Resource{
-	
+public class Land implements Resource {
+
 	private final int numResource;
 	private boolean isRenewable;
 	private int currentNumResource;
-	
+
 	/**
-	 * Land constructor
-	 * Amount land can producer per time period is seeded off numConsumers from first generation * 1000
+	 * Land constructor Amount land can producer per time period is seeded off
+	 * numConsumers from first generation * 1000
+	 * 
 	 * @param numConsumers
 	 */
-	public Land(int numConsumers){
-		Random rn = new Random();
-		numResource=rn.nextInt(numConsumers*1000);
+	public Land(int numConsumers) {
+		numResource = numConsumers * 100000;
 		currentNumResource = numResource;
 		isRenewable = true;
 	}
-	
+
 	@Override
 	public boolean isRenewable() {
 		return isRenewable;

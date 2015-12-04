@@ -5,6 +5,7 @@ import org.junit.Test;
 
 public class ConsumerTest {
 	Consumer c;
+
 	@Before
 	public void setUp() throws Exception {
 		c = new Consumer();

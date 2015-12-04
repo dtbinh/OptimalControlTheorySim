@@ -4,8 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class LandTest {
-	
+
 	Land newLand;
+
 	@Before
 	public void setUp() throws Exception {
 		newLand = new Land(20);

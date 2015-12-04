@@ -10,16 +10,6 @@ public class WeaponProducerTest {
 	}
 
 	@Test
-	public void testRateOfProduction() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testProduce() {
-		fail("Not yet implemented");
-	}
-
-	@Test
 	public void testGetNumGoods() {
 		fail("Not yet implemented");
 	}
@@ -31,6 +21,16 @@ public class WeaponProducerTest {
 
 	@Test
 	public void testPrice() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testGetResource() {
+		fail("Not yet implemented");
+	}
+
+	@Test
+	public void testProduce() {
 		fail("Not yet implemented");
 	}
 

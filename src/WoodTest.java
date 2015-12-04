@@ -6,9 +6,10 @@ import org.junit.Test;
 public class WoodTest {
 
 	Wood testWood;
+
 	@Before
 	public void setUp() throws Exception {
-		testWood=new Wood(20);
+		testWood = new Wood(20);
 	}
 
 	@Test
