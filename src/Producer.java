@@ -21,7 +21,7 @@ public interface Producer {
 	void calculateProfit();
 
 	/**
-	 * sets the price of the good for that time period
+	 * sell goods made by that producer in time period
 	 */
-	void price();
+	void sellGoods(int numSold);
 }

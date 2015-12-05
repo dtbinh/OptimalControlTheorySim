@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Simulation {
 	private ArrayList<Consumer> consumers;
+	private int numInitialConsumers;
 	private FoodProducer foodCart;
 	private WeaponProducer weaponMerchant;
 	private Land land;
@@ -9,12 +10,14 @@ public class Simulation {
 	private int timePeriods;
 	private int currentTimePeriod;
 	private int optimalConstant;
+	private int previousState;
 
 	public Simulation(int numConsumers, int timePeriods) {
 		consumers = new ArrayList<Consumer>();
 		for (int i = 0; i < numConsumers; i++) {
 			consumers.add(new Consumer());
 		}
+		numInitialConsumers = numConsumers;
 		land = new Land(numConsumers);
 		wood = new Wood(numConsumers);
 		foodCart = new FoodProducer(land);
@@ -24,10 +27,23 @@ public class Simulation {
 		currentTimePeriod = 0;
 	}
 
-	// returns the amount of the resource to gather in the current time period
-	// call in main, then use that value to control produce
+	// returns amount of resource to gather/produce with in the current time
+	// period
 	public int optimalControlLaw() {
-		return 0;
+		int state;
+		int temp;
+		if (currentTimePeriod == 1) {
+			state = (int) (10
+					* (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3)) + optimalConstant);
+			previousState = state;
+			return state;
+		} else {
+			state = (int) (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3) + optimalConstant);
+			temp = state;
+			state = previousState + state;
+			previousState = temp;
+			return state;
+		}
 	}
 
 	public int getCurrentTimePeriod() {

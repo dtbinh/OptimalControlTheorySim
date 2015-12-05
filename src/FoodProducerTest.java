@@ -30,7 +30,8 @@ public class FoodProducerTest {
 
 	@Test
 	public void testProduce() {
-		fail("Not yet implemented");
+		foodie.produce(20);
+		assertEquals(20, foodie.getNumGoods());
 	}
 
 }

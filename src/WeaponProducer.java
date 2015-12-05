@@ -25,18 +25,18 @@ public class WeaponProducer implements Producer {
 		profit += (price * goods) - (productionCosts * goods);
 	}
 
-	@Override
-	public void price() {
-		// TODO Auto-generated method stub
-
-	}
-
 	public Resource getResource() {
 		return resource;
 	}
 
 	@Override
 	public void produce(int amountToProduce) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void sellGoods(int numSold) {
 		// TODO Auto-generated method stub
 
 	}

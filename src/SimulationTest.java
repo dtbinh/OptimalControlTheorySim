@@ -13,7 +13,8 @@ public class SimulationTest {
 
 	@Test
 	public void testOptimalControlLaw() {
-		fail("Not yet implemented");
+		sim.setCurrentTimePeriod(1);
+		assertEquals(19933, sim.optimalControlLaw());
 	}
 
 	@Test
@@ -63,7 +64,7 @@ public class SimulationTest {
 
 	@Test
 	public void testGetNumConsumers() {
-		fail("Not yet implemented");
+		assertEquals(20, sim.getNumConsumers());
 	}
 
 	@Test
