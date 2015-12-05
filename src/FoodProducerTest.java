@@ -16,7 +16,7 @@ public class FoodProducerTest {
 
 	@Test
 	public void testGetNumGoods() {
-		assertEquals(20, foodie.getNumGoods());
+		assertEquals(20, foodie.getProducedGoods());
 	}
 
 	@Test
@@ -28,13 +28,13 @@ public class FoodProducerTest {
 
 	@Test
 	public void testProduce() {
-		assertEquals(20, foodie.getNumGoods());
+		assertEquals(20, foodie.getProducedGoods());
 	}
 
 	@Test
 	public void testSellGoods(){
 		foodie.sellGoods(10);
-		assertEquals(10, foodie.getNumGoods());
+		assertEquals(10, foodie.getProducedGoods());
 		assertEquals(10, foodie.getNumGoodsSold());
 	}
 }

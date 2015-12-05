@@ -2,7 +2,7 @@
 public class WeaponProducer implements Producer {
 
 	private Resource resource;
-	private int goods;
+	private int producedGoods;
 	private int numGoodsSold;
 	private int price;
 	private int profit;
@@ -11,44 +11,69 @@ public class WeaponProducer implements Producer {
 	public WeaponProducer(Resource resource) {
 		this.resource = resource;
 		profit = 0;
-		goods = 0;
+		producedGoods = 0;
 		numGoodsSold = 0;
 		price = 10;
 		productionCosts = 2;
 	}
 
-	@Override
-	public int getNumGoods() {
-		return goods;
+	/**
+	 * used to reset the produced goods to zero at the start of a new time
+	 * period
+	 * 
+	 * @param producedGoods
+	 */
+	public void setProducedGoods(int producedGoods) {
+		this.producedGoods = producedGoods;
 	}
 
+	/**
+	 * gets number of goods produced in a time period
+	 */
+	@Override
+	public int getProducedGoods() {
+		return producedGoods;
+	}
+
+	/**
+	 * gets total profit across time periods
+	 * 
+	 * @return profit
+	 */
 	public int getProfit() {
 		return profit;
 	}
 
-	@Override
-	public void calculateProfit() {
-//		System.out.println(price * numGoodsSold);
-//		System.out.println(productionCosts * goods);
-		profit += (price * numGoodsSold) - (productionCosts * goods);
-	}
-
+	/**
+	 * returns the resource owned by the producer
+	 * 
+	 * @return resource
+	 */
 	public Resource getResource() {
 		return resource;
 	}
 
+	/**
+	 * adds profit from time period into total profit
+	 */
+	@Override
+	public void calculateProfit() {
+		profit += (price * numGoodsSold) - (productionCosts * producedGoods);
+	}
+
+	/**
+	 * produces amount of goods passed in, determined by the simulation
+	 */
 	@Override
 	public void produce(int amountToProduce) {
 		for (int i = 0; i < amountToProduce; i++) {
-			goods++;
+			producedGoods++;
 		}
 	}
 
 	@Override
 	public void sellGoods(int numSold) {
 		numGoodsSold += numSold;
-		System.out.println(numGoodsSold);
-		goods -= numSold;
 	}
 
 }

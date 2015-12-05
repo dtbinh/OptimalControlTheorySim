@@ -17,13 +17,13 @@ public class WeaponProducerTest {
 	}
 
 	@Test
-	public void testGetNumGoods() {
-		assertEquals(0, weaponMerch.getNumGoods());
+	public void testGetProducedGoods() {
+		assertEquals(10, weaponMerch.getProducedGoods());
 	}
 
 	@Test
 	public void testCalculateProfit() {
-		assertEquals(60, weaponMerch.getProfit());
+		assertEquals(80, weaponMerch.getProfit());
 	}
 
 	@Test
@@ -33,7 +33,7 @@ public class WeaponProducerTest {
 
 	@Test
 	public void testProduce() {
-		fail("Not yet implemented");
+		assertEquals(10, weaponMerch.getProducedGoods());
 	}
 
 }

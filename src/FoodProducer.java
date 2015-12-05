@@ -21,7 +21,7 @@ public class FoodProducer implements Producer {
 	}
 
 	@Override
-	public int getNumGoods() {
+	public int getProducedGoods() {
 		return goods;
 	}
 

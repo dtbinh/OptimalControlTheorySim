@@ -13,7 +13,7 @@ public interface Producer {
 	 * 
 	 * @return
 	 */
-	int getNumGoods();
+	int getProducedGoods();
 
 	/**
 	 * calculates profit made by producer in time period
