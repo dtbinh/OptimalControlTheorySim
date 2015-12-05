@@ -1,5 +1,7 @@
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,22 +11,21 @@ public class SimulationTest {
 	@Before
 	public void setUp() throws Exception {
 		sim = new Simulation(20, 5);
+		sim.setCurrentTimePeriod(1);
 	}
 
 	@Test
 	public void testOptimalControlLaw() {
-		sim.setCurrentTimePeriod(1);
 		assertEquals(19933, sim.optimalControlLaw());
 	}
 
 	@Test
 	public void testGetCurrentTimePeriod() {
-		assertEquals(0, sim.getCurrentTimePeriod());
+		assertEquals(1, sim.getCurrentTimePeriod());
 	}
 
 	@Test
 	public void testSetCurrentTimePeriod() {
-		sim.setCurrentTimePeriod(1);
 		assertEquals(1, sim.getCurrentTimePeriod());
 	}
 
@@ -37,12 +38,18 @@ public class SimulationTest {
 
 	@Test
 	public void testProduceGoods() {
-		fail("Not yet implemented");
+		sim.produceGoods(sim.optimalControlLaw());
+		assertEquals(67, sim.getWeaponMerchant().getProducedGoods());
 	}
 
 	@Test
 	public void testLetsGoShopping() {
-		fail("Not yet implemented");
+		sim.generateDollaDollaBills();
+		sim.produceGoods(sim.optimalControlLaw());
+		sim.letsGoShopping();
+		ArrayList<Consumer> c = sim.getConsumers();
+		assertTrue( c.get(3).getNumWeapons()> 0);
+		assertTrue(sim.getWeaponMerchant().getNumGoodsSold()>0);
 	}
 
 	@Test
@@ -52,7 +59,11 @@ public class SimulationTest {
 
 	@Test
 	public void testNewGeneration() {
-		fail("Not yet implemented");
+		for(Consumer c: sim.getConsumers()){
+			c.setNumWeapons(4);
+		}
+		sim.newGeneration();
+		assertEquals(40, sim.getConsumers().size());
 	}
 
 	@Test

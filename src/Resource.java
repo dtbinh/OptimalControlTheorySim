@@ -16,6 +16,15 @@ public interface Resource {
 	int getCurrentNumResources();
 
 	/**
+	 * sets the amount of resource left in time period
+	 * 
+	 * @param currentNumResources
+	 * @return
+	 */
+
+	void setCurrentNumResources(int currentNumResources);
+
+	/**
 	 * returns amount of total resource at start of time period
 	 * 
 	 * @return

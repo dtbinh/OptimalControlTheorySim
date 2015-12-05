@@ -32,4 +32,10 @@ public class Land implements Resource {
 		return numResource;
 	}
 
+	@Override
+	public void setCurrentNumResources(int currentNumResources) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

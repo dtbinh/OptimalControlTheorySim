@@ -1,4 +1,6 @@
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Random;
 
 public class Simulation {
 	private ArrayList<Consumer> consumers;
@@ -27,14 +29,17 @@ public class Simulation {
 		currentTimePeriod = 0;
 	}
 
-	// returns amount of resource to gather/produce with in the current time
-	// period
+	/**
+	 * returns the amount to produce in that time period
+	 * 
+	 * @return state
+	 */
 	public int optimalControlLaw() {
 		int state;
 		int temp;
 		if (currentTimePeriod == 1) {
-			state = (int) (10
-					* (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3)) + optimalConstant);
+			state = (int) (10 * (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3))
+					+ optimalConstant);
 			previousState = state;
 			return state;
 		} else {
@@ -46,37 +51,83 @@ public class Simulation {
 		}
 	}
 
+	/**
+	 * returns the currentTimePeriod
+	 * 
+	 * @return currentTimePeriod
+	 */
 	public int getCurrentTimePeriod() {
 		return currentTimePeriod;
 	}
 
+	/**
+	 * sets the currentTimePeriod
+	 * 
+	 * @param currentTimePeriod
+	 */
 	public void setCurrentTimePeriod(int currentTimePeriod) {
 		this.currentTimePeriod = currentTimePeriod;
 	}
 
+	/**
+	 * generates each consumers wallets for the time period
+	 */
 	public void generateDollaDollaBills() {
 		for (Consumer c : consumers) {
 			c.dollaDollaBillYall();
 		}
 	}
 
-	public void produceGoods() {
-
+	/**
+	 * tells each producer to produce
+	 */
+	public void produceGoods(int amountToProduce) {
+		weaponMerchant.produce(amountToProduce);
 	}
 
 	public void letsGoShopping() {
-
+		for (Consumer c : consumers) {
+			int potentialPurchase = 0;
+			int lastWeapons;
+			while (c.getMoney() > potentialPurchase * weaponMerchant.getPrice()) {
+				potentialPurchase++;
+			}
+			if (weaponMerchant.getProducedGoods() - weaponMerchant.getNumGoodsSold() > potentialPurchase) {
+				c.purchaseWeapons(potentialPurchase, weaponMerchant.getPrice());
+				weaponMerchant.sellGoods(potentialPurchase);
+			} else {
+				lastWeapons = weaponMerchant.getProducedGoods() - weaponMerchant.getNumGoodsSold();
+				c.purchaseWeapons(lastWeapons, weaponMerchant.getPrice());
+				weaponMerchant.sellGoods(lastWeapons);
+				return;
+			}
+		}
 	}
 
 	public void heyYaWannaTrade() {
 
 	}
 
+	/**
+	 * generates the next generation of consumers, if they survive the realSurvivalRate vs random 0-1
+	 * another consumer is produced, if they don't then that consumer is removed(aka dies)
+	 */
 	public void newGeneration() {
-
+		Random rn = new Random();
+		int newGeneration = 0;
+		for (Iterator<Consumer> it = consumers.iterator(); it.hasNext();) {
+			Consumer c = it.next();
+			if (c.calculateRealSurvivalRate() > rn.nextDouble()) {
+				newGeneration++;
+			} else {
+				it.remove();
+			}
+		}
+		for (int i = 0; i < newGeneration; i++) {
+			consumers.add(new Consumer());
+		}
 	}
 
-	// everything below this comment is for testing purposes only
 	public ArrayList<Consumer> getConsumers() {
 		return consumers;
 	}

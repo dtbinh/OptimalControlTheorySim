@@ -1,28 +1,49 @@
+import java.util.Iterator;
 import java.util.Random;
 
-public class Consumer {
+public class Consumer{
 
 	private int money;
 	private final double baseSurvivalRate;
 	private int numFood;
-	private int numSpears;
-	private int numGuns;
-	private double realSurvivalRate;
+	private int numWeapons;
 	private boolean isAlive;
 
 	/**
 	 * Constructor
 	 */
 	public Consumer() {
-		realSurvivalRate = baseSurvivalRate = .2;
+		baseSurvivalRate = .2;
 		isAlive = true;
 		numFood = 0;
-		numSpears = 0;
-		numGuns = 0;
+		numWeapons = 0;
 		money = 0;
 
 	}
 
+	/**
+	 * gets the number of weapons a consumer has
+	 * 
+	 * @return numWeapons
+	 */
+	public int getNumWeapons() {
+		return numWeapons;
+	}
+
+	/**
+	 * sets the number of weapons a consumer has
+	 * 
+	 * @param numWeapons
+	 */
+	public void setNumWeapons(int numWeapons) {
+		this.numWeapons = numWeapons;
+	}
+
+	/**
+	 * returns the amount of money the consumer has
+	 * 
+	 * @return money
+	 */
 	public int getMoney() {
 		return money;
 	}
@@ -32,7 +53,7 @@ public class Consumer {
 	 */
 	public void dollaDollaBillYall() {
 		Random rn = new Random();
-		money = rn.nextInt(10);
+		money = rn.nextInt(60);
 	}
 
 	/**
@@ -60,7 +81,22 @@ public class Consumer {
 	 * @return
 	 */
 	public double calculateRealSurvivalRate() {
-		return realSurvivalRate;
+		double temp = baseSurvivalRate;
+		for (int i = 0; i < numWeapons; i++) {
+			temp += .2;
+		}
+		return temp;
+	}
+
+	/**
+	 * purchases weapons
+	 * 
+	 * @param numToPurchase
+	 * @param price
+	 */
+	public void purchaseWeapons(int numToPurchase, int price) {
+		numWeapons += numToPurchase;
+		money -= numToPurchase * price;
 	}
 
 }

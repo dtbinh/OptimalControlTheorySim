@@ -14,6 +14,7 @@ public class Wood implements Resource {
 	public Wood(int numConsumers) {
 		numResource = numConsumers * 1000;
 		isRenewable = false;
+		currentNumResource = numResource;
 	}
 
 	@Override
@@ -29,6 +30,11 @@ public class Wood implements Resource {
 	@Override
 	public int getNumResources() {
 		return numResource;
+	}
+
+	@Override
+	public void setCurrentNumResources(int currentNumResources) {
+		this.currentNumResource=currentNumResources;
 	}
 
 }

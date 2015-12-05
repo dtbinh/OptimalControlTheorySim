@@ -18,6 +18,33 @@ public class WeaponProducer implements Producer {
 	}
 
 	/**
+	 * gets the number of goods sold in a time period so far
+	 * 
+	 * @return numGoodsSold
+	 */
+	public int getNumGoodsSold() {
+		return numGoodsSold;
+	}
+
+	/**
+	 * used to reset the number of goods sold at the start of a time period
+	 * 
+	 * @param numGoodsSold
+	 */
+	public void setNumGoodsSold(int numGoodsSold) {
+		this.numGoodsSold = numGoodsSold;
+	}
+
+	/**
+	 * returns the price of a weapon
+	 * 
+	 * @return price
+	 */
+	public int getPrice() {
+		return price;
+	}
+
+	/**
 	 * used to reset the produced goods to zero at the start of a new time
 	 * period
 	 * 
@@ -66,11 +93,16 @@ public class WeaponProducer implements Producer {
 	 */
 	@Override
 	public void produce(int amountToProduce) {
-		for (int i = 0; i < amountToProduce; i++) {
+		int production = resource.getCurrentNumResources()-amountToProduce;
+		for (int i = 0; i < production; i++) {
 			producedGoods++;
+			resource.setCurrentNumResources(resource.getCurrentNumResources()-1);
 		}
 	}
 
+	/**
+	 * sells goods
+	 */
 	@Override
 	public void sellGoods(int numSold) {
 		numGoodsSold += numSold;
