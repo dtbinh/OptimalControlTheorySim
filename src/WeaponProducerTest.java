@@ -11,6 +11,9 @@ public class WeaponProducerTest {
 	public void setUp() throws Exception {
 		wood = new Wood(20);
 		weaponMerch = new WeaponProducer(wood);
+		weaponMerch.produce(10);
+		weaponMerch.sellGoods(10);
+		weaponMerch.calculateProfit();
 	}
 
 	@Test
@@ -20,17 +23,12 @@ public class WeaponProducerTest {
 
 	@Test
 	public void testCalculateProfit() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrice() {
-		fail("Not yet implemented");
+		assertEquals(60, weaponMerch.getProfit());
 	}
 
 	@Test
 	public void testGetResource() {
-		fail("Not yet implemented");
+		assertNotNull(weaponMerch.getResource());
 	}
 
 	@Test

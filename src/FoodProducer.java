@@ -12,7 +12,7 @@ public class FoodProducer implements Producer {
 		profit = 0;
 		goods = 0;
 		productionCosts = 2;
-		price = 2;
+		price = 10;
 		numGoodsSold = 0;
 	}
 
@@ -25,9 +25,13 @@ public class FoodProducer implements Producer {
 		return goods;
 	}
 
+	public int getProfit(){
+		return profit;
+	}
+	
 	@Override
 	public void calculateProfit() {
-		this.profit += (goods * price) - (productionCosts * goods);
+		this.profit += (numGoodsSold * price) - (productionCosts * goods);
 	}
 
 	@Override

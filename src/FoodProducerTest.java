@@ -11,27 +11,30 @@ public class FoodProducerTest {
 	public void setUp() throws Exception {
 		land = new Land(20);
 		foodie = new FoodProducer(land);
+		foodie.produce(20);
 	}
 
 	@Test
 	public void testGetNumGoods() {
-		assertEquals(0, foodie.getNumGoods());
+		assertEquals(20, foodie.getNumGoods());
 	}
 
 	@Test
 	public void testCalculateProfit() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testPrice() {
-		fail("Not yet implemented");
+		foodie.sellGoods(10);
+		foodie.calculateProfit();
+		assertEquals(60,foodie.getProfit());
 	}
 
 	@Test
 	public void testProduce() {
-		foodie.produce(20);
 		assertEquals(20, foodie.getNumGoods());
 	}
 
+	@Test
+	public void testSellGoods(){
+		foodie.sellGoods(10);
+		assertEquals(10, foodie.getNumGoods());
+		assertEquals(10, foodie.getNumGoodsSold());
+	}
 }
