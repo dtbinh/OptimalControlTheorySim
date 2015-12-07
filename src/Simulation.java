@@ -169,8 +169,10 @@ public class Simulation {
 		int broken;
 		for(Consumer c: consumers){
 			broken=0;
+			int breakChance;
 			for(int i = 0; i < c.getNumWeapons(); i++){
-				if(rn.nextDouble()*10>1){
+				breakChance = rn.nextInt(10);
+				if(rn.nextDouble()>4){
 					broken++;
 				}
 			}
