@@ -49,6 +49,14 @@ public class Consumer{
 	}
 
 	/**
+	 * sets the amount of money the consumer has after a trade
+	 * @param money
+	 */
+	public void setMoney(int money){
+		this.money=money;
+	}
+	
+	/**
 	 * generates the wallet for the consumer each time period
 	 */
 	public void dollaDollaBillYall() {

@@ -30,7 +30,8 @@ public class Simulation {
 	}
 
 	/**
-	 * returns the end state of the resource owned by the producer in that time period
+	 * returns the end state of the resource owned by the producer in that time
+	 * period
 	 * 
 	 * @return state
 	 */
@@ -85,6 +86,10 @@ public class Simulation {
 		weaponMerchant.produce(amountToProduce);
 	}
 
+	/**
+	 * consumers buy weapons, performing greedy purchases right now. Consumers
+	 * will buy until they can't afford any more
+	 */
 	public void letsGoShopping() {
 		for (Consumer c : consumers) {
 			int potentialPurchase = 0;
@@ -104,13 +109,47 @@ public class Simulation {
 		}
 	}
 
+	/**
+	 * consumers trade between each other, so far only set for weapons
+	 */
 	public void heyYaWannaTrade() {
+		ArrayList<Consumer> buyers = new ArrayList<Consumer>();
+		ArrayList<Consumer> sellers = new ArrayList<Consumer>();
+		for (Consumer c : consumers) {
+			if (c.getNumWeapons() < 4) {
+				buyers.add(c);
+			} else if (c.getNumWeapons() > 4) {
+				sellers.add(c);
+			}
+		}
 
+		consumers.removeAll(buyers);
+		consumers.removeAll(sellers);
+
+		for (Consumer c : sellers) {
+			for (Consumer f : buyers) {
+				if (f.getNumWeapons() == 4 || f.getMoney() < 10) {
+					break;
+				}
+				if (c.getNumWeapons() < 4) {
+					break;
+				} else {
+					c.setNumWeapons(c.getNumWeapons() - 1);
+					c.setMoney(c.getMoney() + 10);
+					f.setNumWeapons(f.getNumWeapons() + 1);
+					f.setMoney(f.getMoney() - 10);
+				}
+
+			}
+		}
+		consumers.addAll(buyers);
+		consumers.addAll(sellers);
 	}
 
 	/**
-	 * generates the next generation of consumers, if they survive the realSurvivalRate vs random 0-1
-	 * another consumer is produced, if they don't then that consumer is removed(aka dies)
+	 * generates the next generation of consumers, if they survive the
+	 * realSurvivalRate vs random 0-1 another consumer is produced, if they
+	 * don't then that consumer is removed(aka dies)
 	 */
 	public void newGeneration() {
 		Random rn = new Random();

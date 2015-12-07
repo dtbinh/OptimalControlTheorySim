@@ -7,7 +7,16 @@ public class OptimalControl {
 	// numLand at start = 100,000,000
 
 	public static void main(String[] args) {
-		s = new Simulation(1000, 10);
+		s = new Simulation(1000, 21);
+		for(int i = 1; i < 21; i++){
+			s.setCurrentTimePeriod(i);
+			s.generateDollaDollaBills();
+			s.produceGoods(s.optimalControlLaw());
+			s.letsGoShopping();
+			s.heyYaWannaTrade();
+			s.newGeneration();
+			System.out.println("generation " + i + ": " + s.getConsumers().size());
+		}
 	}
 
 	// each time period:
