@@ -86,6 +86,8 @@ public class WeaponProducer implements Producer {
 	@Override
 	public void calculateProfit() {
 		profit += (price * numGoodsSold) - (productionCosts * producedGoods);
+		producedGoods = producedGoods-numGoodsSold;
+		numGoodsSold = 0;
 	}
 
 	/**

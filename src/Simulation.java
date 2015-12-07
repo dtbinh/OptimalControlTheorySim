@@ -107,6 +107,8 @@ public class Simulation {
 				return;
 			}
 		}
+		weaponMerchant.calculateProfit();
+		weaponMerchant.setNumGoodsSold(0);
 	}
 
 	/**
@@ -150,6 +152,7 @@ public class Simulation {
 	 * generates the next generation of consumers, if they survive the
 	 * realSurvivalRate vs random 0-1 another consumer is produced, if they
 	 * don't then that consumer is removed(aka dies)
+	 * Also destroys weapons at the end of the time period
 	 */
 	public void newGeneration() {
 		Random rn = new Random();
@@ -162,6 +165,18 @@ public class Simulation {
 				it.remove();
 			}
 		}
+		
+		int broken;
+		for(Consumer c: consumers){
+			broken=0;
+			for(int i = 0; i < c.getNumWeapons(); i++){
+				if(rn.nextDouble()*10>1){
+					broken++;
+				}
+			}
+			c.setNumWeapons(c.getNumWeapons()-broken);
+		}
+		
 		for (int i = 0; i < newGeneration; i++) {
 			consumers.add(new Consumer());
 		}
