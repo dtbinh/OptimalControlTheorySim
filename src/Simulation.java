@@ -30,7 +30,7 @@ public class Simulation {
 	}
 
 	/**
-	 * returns the amount to produce in that time period
+	 * returns the end state of the resource owned by the producer in that time period
 	 * 
 	 * @return state
 	 */

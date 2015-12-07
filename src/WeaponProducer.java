@@ -89,7 +89,8 @@ public class WeaponProducer implements Producer {
 	}
 
 	/**
-	 * produces amount of goods passed in, determined by the simulation
+	 * produces amount of goods necessary to reduce resource down to the state passed in
+	 * so basically produces the amount of goods for that time period based on law
 	 */
 	@Override
 	public void produce(int amountToProduce) {
