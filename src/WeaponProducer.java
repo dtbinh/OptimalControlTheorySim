@@ -96,7 +96,10 @@ public class WeaponProducer implements Producer {
 	 */
 	@Override
 	public void produce(int amountToProduce) {
-		int production = resource.getCurrentNumResources()-amountToProduce;
+		if(amountToProduce<0){
+			return;
+		}
+		int production = resource.getCurrentNumResources()-amountToProduce;		
 		for (int i = 0; i < production; i++) {
 			producedGoods++;
 			resource.setCurrentNumResources(resource.getCurrentNumResources()-1);

@@ -38,16 +38,22 @@ public class Simulation {
 	public int optimalControlLaw() {
 		int state;
 		int temp;
+		double rate;
+		double numConsumTemp = numInitialConsumers;
+		double optimalConstantTemp = optimalConstant;
 		if (currentTimePeriod == 1) {
-			state = (int) (10 * (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3))
-					+ optimalConstant);
+			rate = Math.pow((double) -currentTimePeriod, 3.0)/3.0;
+			state = (int) ((numConsumTemp * rate)
+					+ optimalConstantTemp);
 			previousState = state;
+			System.out.println("amount to produce: " + state);
 			return state;
 		} else {
-			state = (int) (numInitialConsumers * (Math.pow((double) -currentTimePeriod, 3.0) / 3) + optimalConstant);
-			temp = state;
-			state = previousState + state;
-			previousState = temp;
+			rate = Math.pow((double) -currentTimePeriod, 3.0)/3.0;
+			state = (int) ((numConsumTemp * rate)
+					+ optimalConstantTemp);
+			previousState = state;
+			System.out.println("amount to produce: " + state);
 			return state;
 		}
 	}
@@ -94,21 +100,22 @@ public class Simulation {
 		for (Consumer c : consumers) {
 			int potentialPurchase = 0;
 			int lastWeapons;
-			while (c.getMoney() > potentialPurchase * weaponMerchant.getPrice()) {
+			while (c.getMoney() > potentialPurchase * weaponMerchant.getPrice()
+					&& potentialPurchase < weaponMerchant.getProducedGoods()) {
 				potentialPurchase++;
 			}
-			if (weaponMerchant.getProducedGoods() - weaponMerchant.getNumGoodsSold() > potentialPurchase) {
-				c.purchaseWeapons(potentialPurchase, weaponMerchant.getPrice());
-				weaponMerchant.sellGoods(potentialPurchase);
-			} else {
+			if (weaponMerchant.getProducedGoods() - weaponMerchant.getNumGoodsSold() < potentialPurchase) {
 				lastWeapons = weaponMerchant.getProducedGoods() - weaponMerchant.getNumGoodsSold();
 				c.purchaseWeapons(lastWeapons, weaponMerchant.getPrice());
 				weaponMerchant.sellGoods(lastWeapons);
+				weaponMerchant.calculateProfit();
 				return;
+			} else {
+				c.purchaseWeapons(potentialPurchase, weaponMerchant.getPrice());
+				weaponMerchant.sellGoods(potentialPurchase);
 			}
 		}
 		weaponMerchant.calculateProfit();
-		weaponMerchant.setNumGoodsSold(0);
 	}
 
 	/**
@@ -151,34 +158,36 @@ public class Simulation {
 	/**
 	 * generates the next generation of consumers, if they survive the
 	 * realSurvivalRate vs random 0-1 another consumer is produced, if they
-	 * don't then that consumer is removed(aka dies)
-	 * Also destroys weapons at the end of the time period
+	 * don't then that consumer is removed(aka dies) Also destroys weapons at
+	 * the end of the time period
 	 */
 	public void newGeneration() {
 		Random rn = new Random();
+		double chance;
 		int newGeneration = 0;
 		for (Iterator<Consumer> it = consumers.iterator(); it.hasNext();) {
 			Consumer c = it.next();
-			if (c.calculateRealSurvivalRate() > rn.nextDouble()) {
+			chance = rn.nextDouble();
+			if (c.calculateRealSurvivalRate() > chance) {
 				newGeneration++;
 			} else {
 				it.remove();
 			}
 		}
-		
+
 		int broken;
-		for(Consumer c: consumers){
-			broken=0;
+		for (Consumer c : consumers) {
+			broken = 0;
 			int breakChance;
-			for(int i = 0; i < c.getNumWeapons(); i++){
+			for (int i = 0; i < c.getNumWeapons(); i++) {
 				breakChance = rn.nextInt(10);
-				if(rn.nextDouble()>4){
+				if (rn.nextDouble() > 4) {
 					broken++;
 				}
 			}
-			c.setNumWeapons(c.getNumWeapons()-broken);
+			c.setNumWeapons(c.getNumWeapons() - broken);
 		}
-		
+
 		for (int i = 0; i < newGeneration; i++) {
 			consumers.add(new Consumer());
 		}
