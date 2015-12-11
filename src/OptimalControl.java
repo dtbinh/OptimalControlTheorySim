@@ -12,6 +12,7 @@ public class OptimalControl {
 			s.setCurrentTimePeriod(i);
 			s.generateDollaDollaBills();
 			s.produceGoods(s.optimalControlLaw());
+			System.out.println("current resources(should equal state): " + s.getWeaponMerchant().getResource().getCurrentNumResources());
 			System.out.println("number of goods produced: " + s.getWeaponMerchant().getProducedGoods());
 			s.letsGoShopping();
 			System.out.println("overall profit: " + s.getWeaponMerchant().getProfit());

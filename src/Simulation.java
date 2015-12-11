@@ -41,19 +41,28 @@ public class Simulation {
 		double rate;
 		double numConsumTemp = numInitialConsumers;
 		double optimalConstantTemp = optimalConstant;
+		if(previousState < 0){
+			System.out.println("state post production: " + 0);
+			return 0;
+		}
 		if (currentTimePeriod == 1) {
 			rate = Math.pow((double) -currentTimePeriod, 3.0)/3.0;
 			state = (int) ((numConsumTemp * rate)
 					+ optimalConstantTemp);
 			previousState = state;
-			System.out.println("amount to produce: " + state);
+			System.out.println("state post production: " + state);
 			return state;
 		} else {
 			rate = Math.pow((double) -currentTimePeriod, 3.0)/3.0;
 			state = (int) ((numConsumTemp * rate)
 					+ optimalConstantTemp);
+			if(state<0){
+				state = previousState;
+				System.out.println("state post production: " + state);
+				return state;
+			}
 			previousState = state;
-			System.out.println("amount to produce: " + state);
+			System.out.println("state post production: " + state);
 			return state;
 		}
 	}
@@ -178,10 +187,8 @@ public class Simulation {
 		int broken;
 		for (Consumer c : consumers) {
 			broken = 0;
-			int breakChance;
 			for (int i = 0; i < c.getNumWeapons(); i++) {
-				breakChance = rn.nextInt(10);
-				if (rn.nextDouble() > 4) {
+				if (rn.nextDouble() > .5) {
 					broken++;
 				}
 			}

@@ -12,7 +12,7 @@ public class Wood implements Resource {
 	 * @param numConsumers
 	 */
 	public Wood(int numConsumers) {
-		numResource = numConsumers * 1000;
+		numResource = numConsumers * 100000;
 		isRenewable = false;
 		currentNumResource = numResource;
 	}
