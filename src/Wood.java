@@ -34,7 +34,7 @@ public class Wood implements Resource {
 
 	@Override
 	public void setCurrentNumResources(int currentNumResources) {
-		this.currentNumResource=currentNumResources;
+		this.currentNumResource = currentNumResources;
 	}
 
 }

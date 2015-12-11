@@ -86,23 +86,31 @@ public class WeaponProducer implements Producer {
 	@Override
 	public void calculateProfit() {
 		profit += (price * numGoodsSold) - (productionCosts * producedGoods);
-		producedGoods = producedGoods-numGoodsSold;
+		producedGoods = producedGoods - numGoodsSold;
 		numGoodsSold = 0;
 	}
 
 	/**
-	 * produces amount of goods necessary to reduce resource down to the state passed in
-	 * so basically produces the amount of goods for that time period based on law
+	 * produces amount of goods necessary to reduce resource down to the state
+	 * passed in so basically produces the amount of goods for that time period
+	 * based on law
 	 */
 	@Override
 	public void produce(int amountToProduce) {
-		if(amountToProduce<0){
+		if (amountToProduce < 0) {
 			return;
 		}
-		int production = resource.getCurrentNumResources()-amountToProduce;		
+		int production = resource.getCurrentNumResources() - amountToProduce;
 		for (int i = 0; i < production; i++) {
 			producedGoods++;
-			resource.setCurrentNumResources(resource.getCurrentNumResources()-1);
+			resource.setCurrentNumResources(resource.getCurrentNumResources() - 1);
+		}
+		if (production == 0) {
+			int temp = resource.getCurrentNumResources();
+			for (int i = 0; i < temp; i++) {
+				producedGoods++;
+				resource.setCurrentNumResources(resource.getCurrentNumResources() - 1);
+			}
 		}
 	}
 

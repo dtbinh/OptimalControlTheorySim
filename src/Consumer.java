@@ -1,7 +1,7 @@
 import java.util.Iterator;
 import java.util.Random;
 
-public class Consumer{
+public class Consumer {
 
 	private int money;
 	private final double baseSurvivalRate;
@@ -50,12 +50,13 @@ public class Consumer{
 
 	/**
 	 * sets the amount of money the consumer has after a trade
+	 * 
 	 * @param money
 	 */
-	public void setMoney(int money){
-		this.money=money;
+	public void setMoney(int money) {
+		this.money = money;
 	}
-	
+
 	/**
 	 * generates the wallet for the consumer each time period
 	 */
