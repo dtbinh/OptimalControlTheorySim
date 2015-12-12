@@ -34,7 +34,7 @@ public class OptimalControl {
 				fileWriter.append(String.valueOf(s.getWeaponMerchant().getProducedGoods()));
 				fileWriter.append(',');
 				s.letsGoShopping();
-				//s.heyYaWannaTrade();
+				s.heyYaWannaTrade();
 				s.newGeneration();
 				fileWriter.append(String.valueOf(s.getWeaponMerchant().getProfit()));
 				fileWriter.append(',');
