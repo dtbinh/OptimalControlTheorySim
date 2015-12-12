@@ -45,7 +45,6 @@ public class Simulation {
 			rate = Math.pow((double) -currentTimePeriod, 3.0) / 3.0;
 			state = (int) ((numConsumTemp * rate) + optimalConstantTemp);
 			previousState = state;
-			System.out.println("state post production: " + state);
 			return state;
 		} else {
 			rate = Math.pow((double) -currentTimePeriod, 3.0) / 3.0;
@@ -53,11 +52,9 @@ public class Simulation {
 			if (state < 0) {
 				state = weaponMerchant.getResource().getCurrentNumResources();
 				previousState = 0;
-				System.out.println("state post production: " + 0);
 				return state;
 			}
 			previousState = state;
-			System.out.println("state post production: " + state);
 			return state;
 		}
 	}
