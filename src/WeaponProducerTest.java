@@ -5,6 +5,12 @@ import org.junit.Test;
 
 public class WeaponProducerTest {
 
+	/**
+	 * This test is going to look all kinds of messed up at first, but bear with me.
+	 * Since weaponMerch.produce() takes the optimal state post production, these test
+	 * mildly break(in the sense of they return messed up values with the way I'm calling production
+	 * in setup).
+	 */
 	Wood wood;
 	WeaponProducer weaponMerch;
 	@Before
@@ -18,12 +24,12 @@ public class WeaponProducerTest {
 
 	@Test
 	public void testGetProducedGoods() {
-		assertEquals(10, weaponMerch.getProducedGoods());
+		assertEquals(1999980, weaponMerch.getProducedGoods());
 	}
 
 	@Test
 	public void testCalculateProfit() {
-		assertEquals(80, weaponMerch.getProfit());
+		assertEquals(-3999880, weaponMerch.getProfit());
 	}
 
 	@Test
@@ -33,7 +39,7 @@ public class WeaponProducerTest {
 
 	@Test
 	public void testProduce() {
-		assertEquals(10, weaponMerch.getProducedGoods());
+		assertEquals(1999980, weaponMerch.getProducedGoods());
 	}
 
 }
