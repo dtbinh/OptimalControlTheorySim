@@ -43,12 +43,12 @@ public class Simulation {
 		double optimalConstantTemp = optimalConstant;
 		if (currentTimePeriod == 1) {
 			rate = Math.pow((double) -currentTimePeriod, 3.0) / 3.0;
-			state = (int) ((numConsumTemp * rate) + optimalConstantTemp);
+			state = (int) ((numConsumTemp * 4 * rate) + optimalConstantTemp);
 			previousState = state;
 			return state;
 		} else {
 			rate = Math.pow((double) -currentTimePeriod, 3.0) / 3.0;
-			state = (int) ((numConsumTemp * rate) + optimalConstantTemp);
+			state = (int) ((numConsumTemp * 4 * rate) + optimalConstantTemp);
 			if (state < 0) {
 				state = weaponMerchant.getResource().getCurrentNumResources();
 				previousState = 0;
