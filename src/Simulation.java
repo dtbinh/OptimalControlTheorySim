@@ -135,7 +135,7 @@ public class Simulation {
 
 		consumers.removeAll(buyers);
 		consumers.removeAll(sellers);
-
+		Random rn = new Random();
 		for (Consumer c : sellers) {
 			for (Consumer f : buyers) {
 				if (f.getNumWeapons() == 4 || f.getMoney() < 10) {
@@ -145,9 +145,13 @@ public class Simulation {
 					break;
 				} else {
 					c.setNumWeapons(c.getNumWeapons() - 1);
-					c.setMoney(c.getMoney() + 10);
 					f.setNumWeapons(f.getNumWeapons() + 1);
-					f.setMoney(f.getMoney() - 10);
+					double temp = rn.nextDouble();
+					//chance that the seller will give buyer a weapon fo free
+					if(temp > .5){
+						c.setMoney(c.getMoney() + 10);
+						f.setMoney(f.getMoney() - 10);
+					}
 				}
 
 			}
