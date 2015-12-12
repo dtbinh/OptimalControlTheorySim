@@ -179,7 +179,7 @@ public class Simulation {
 		int broken;
 		for (Consumer c : consumers) {
 			broken = 0;
-			for (int i = 0; i < c.getNumWeapons(); i++) {
+			for (int i = 0; i < c.getNumWeapons() || i < 4; i++) {
 				if (rn.nextDouble() > .5) {
 					broken++;
 				}
